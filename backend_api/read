@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "root",
+    "password": "pCZwxVEZdVbKtlqqEcFyTYSHvlRFVSlV",
+    "database": "railway",
+    "host": "monorail.proxy.rlwy.net",
+    "dialect": "mysql",
+    "port": "31547"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "railway",
+    "host": "monorail.proxy.rlwy.net",
+    "dialect": "mysql",
+    "port": "31547"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "railway",
+    "host": "monorail.proxy.rlwy.net",
+    "dialect": "mysql",
+    "port": "31547"
+  }
+}
