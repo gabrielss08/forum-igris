@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import './forum.css';
 
 const ListarPosts = () => {
     const [posts, setPosts] = useState([]);
@@ -8,7 +9,7 @@ const ListarPosts = () => {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const response = await axios.get('http://localhost:8081/post');
+                const response = await axios.get('http://amusing-mercy-production.up.railway.app/post');
                 setPosts(response.data);
             } catch (error) {
                 console.log(error);
@@ -18,6 +19,8 @@ const ListarPosts = () => {
     }, []);
 
     return (
+        <div className="App">
+      <header className="App-header">
         <div className="container">
             <h2 className="w-100 d-flex justify-content-center p-3">Lista de Posts</h2>
             <div className="row">
@@ -33,6 +36,8 @@ const ListarPosts = () => {
                     </ul>
                 </div>
             </div>
+        </div>
+        </header>
         </div>
     );
 };

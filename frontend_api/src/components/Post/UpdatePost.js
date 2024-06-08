@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import './forum.css';
 import { Link } from 'react-router-dom';
 
 const AtualizarPost = () => {
@@ -33,7 +34,7 @@ const AtualizarPost = () => {
         e.preventDefault();
         try {
             await axios.put(`http://localhost:8081/post/${id}`, post);
-            navigate('/post');
+            navigate(`/post/${id}`);
         } catch (err) {
             console.log(err);
         }
@@ -57,10 +58,7 @@ const AtualizarPost = () => {
                             <label htmlFor="author" className="form-label">Autor</label>
                             <input type="text" className="form-control" id="author" name="author" value={post.author} onChange={handleChange} />
                         </div>
-                        <button type="button" className="btn btn-primary">
-                            <Link to="/post" className="text-white">Cadastrar</Link>
-                        </button>
-
+                        <button type="submit" className="btn btn-primary">Atualizar</button>
                     </form>
                 </div>
             </div>

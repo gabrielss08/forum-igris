@@ -1,4 +1,3 @@
-import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import ListPost from './components/Post/ListPost';
@@ -9,14 +8,16 @@ import ReadPost from './components/Post/ReadPost';
 import AddComment from './components/Comment/AddComment';
 import UpdateComment from './components/Comment/UpdateComment';
 
+import Principal from './components/main/pag';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div >
+      <header >
         <BrowserRouter>
           <Routes>
             
+          <Route path="/" element={<Principal/>} />
             <Route path="/post/" element={<ListPost/>} />
             <Route path="/addpost/" element={<AddPost/>} />
             <Route path="/updatepost/:id" element={<UpdatePost/>} />

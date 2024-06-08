@@ -18,7 +18,7 @@ const AddComment = () => {
     const handleClick = async (e) => {
         e.preventDefault();
         try {
-            await axios.post(`http://localhost:8081/comment/${postId}/comments`, {
+            await axios.post(`http://amusing-mercy-production.up.railway.app/comment/${postId}/comments`, {
                 postId: postId, // Passando o postId junto com o novo comentário
                 content: comment.content,
                 author: comment.author
