@@ -13,7 +13,6 @@ const comment = require('./controllers/commentController.js');
 app.use(bodyParser.json());
 //Função CORS para a autorização do uso da API
 app.use(cors())
-app.get('/', (req, res)=> res.send('Estou aqui'))
 app.use('/post', post);
 app.use('/comment', comment);
 app.listen(port, () => console.log(`Servidor rodando porta ${port}!`))
