@@ -19,7 +19,7 @@ const CriarPost = () => {
     const handleClick = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:8081/post', post);
+            await axios.post('http://amusing-mercy-production.up.railway.app/post', post);
             navigate('/post');
         } catch (err) {
             console.log(err);
