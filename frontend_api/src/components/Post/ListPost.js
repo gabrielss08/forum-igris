@@ -9,7 +9,7 @@ const ListarPosts = () => {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const response = await axios.get('http://amusing-mercy-production.up.railway.app/post');
+                const response = await axios.get('https://forum-igris.onrender.com/post/');
                 setPosts(response.data);
             } catch (error) {
                 console.log(error);

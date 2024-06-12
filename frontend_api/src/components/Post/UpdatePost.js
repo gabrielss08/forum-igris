@@ -17,7 +17,7 @@ const AtualizarPost = () => {
     useEffect(() => {
         const fetchPost = async () => {
             try {
-                const response = await axios.get(`http://amusing-mercy-production.up.railway.app/post/${id}`);
+                const response = await axios.get(`https://forum-igris.onrender.com/post/${id}`);
                 setPost(response.data);
             } catch (error) {
                 console.log(error);
@@ -33,7 +33,7 @@ const AtualizarPost = () => {
     const handleClick = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`http://amusing-mercy-production.up.railway.app/post/${id}`, post);
+            await axios.put(`https://forum-igris.onrender.com/post/${id}`, post);
             navigate(`/post/${id}`);
         } catch (err) {
             console.log(err);

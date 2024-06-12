@@ -11,7 +11,7 @@ const ReadPost = () => {
     const navigate = useNavigate();
 
     const fetchComments = () => {
-        axios.get(`http://amusing-mercy-production.up.railway.app/comment/${id}/comments`) 
+        axios.get(`https://forum-igris.onrender.com/comment/${id}/comments`) 
             .then(res => {
                 setComments(res.data);
             })
@@ -19,7 +19,7 @@ const ReadPost = () => {
     };
     
     useEffect(() => {
-        axios.get(`http://amusing-mercy-production.up.railway.app/post/${id}`)
+        axios.get(`https://forum-igris.onrender.com/post/${id}`)
             .then(res => {
                 setPost(res.data);
                 fetchComments();
@@ -32,7 +32,7 @@ const ReadPost = () => {
     };
 
     const handleDeletePost = () => {
-        axios.delete(`http://amusing-mercy-production.up.railway.app/post/${id}`)
+        axios.delete(`https://forum-igris.onrender.com/post/${id}`)
             .then(() => {
                 navigate(`/post/`);
             })
@@ -40,7 +40,7 @@ const ReadPost = () => {
     };
 
     const handleDeleteComment = (commentId) => {
-        axios.delete(`http://amusing-mercy-production.up.railway.app/comment/${commentId}`)
+        axios.delete(`https://forum-igris.onrender.com/comment/${commentId}`)
             .then(() => {
                 fetchComments(); // Atualiza os comentários após a exclusão
             })
