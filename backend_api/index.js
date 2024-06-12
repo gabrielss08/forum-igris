@@ -1,18 +1,29 @@
+require('dotenv').config(); // Carrega as variáveis de ambiente do arquivo .env
 const express = require('express');
 const bodyParser = require('body-parser');
-//protocolo de comunicacão entre apis e outros serviços cors
-//CORS: autoriza para qualquer tipo de serviço (front-end, outras apis,
-const cors = require('cors')
+const cors = require('cors');
+const db = require('./models'); // Importa a configuração do banco de dados
+
 const app = express();
 const port = 8081;
-//importações
 
+// Importações dos controladores
 const post = require('./controllers/postController.js');
 const comment = require('./controllers/commentController.js');
-//Rotas
+
+// Middleware
 app.use(bodyParser.json());
-//Função CORS para a autorização do uso da API
-app.use(cors())
+app.use(cors()); // Autoriza o uso da API a partir de qualquer origem
+
+// Rotas
 app.use('/post', post);
 app.use('/comment', comment);
-app.listen(port, () => console.log(`Servidor rodando porta ${port}!`))
+
+// Sincroniza o banco de dados e inicia o servidor
+db.sequelize.sync().then(() => {
+  app.listen(port, () => {
+    console.log(`Servidor rodando na porta ${port}!`);
+  });
+}).catch(err => {
+  console.error('Não foi possível conectar ao banco de dados:', err);
+});
