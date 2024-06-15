@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-import './forum.css';
+import './add.css';
 
 const CriarPost = () => {
     const [post, setPost] = useState({
@@ -73,7 +73,9 @@ const CriarPost = () => {
                             Cadastrar
                         </button>
                         <br />
-                        <Link to="/post">Listar Posts</Link>
+                        <button className='bt'>
+                        <Link to="/post">LISTA DE POSTS</Link>
+                        </button>
                     </form>
                 </div>
             </div>
