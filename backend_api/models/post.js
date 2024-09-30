@@ -10,7 +10,12 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      // Um Post tem muitos Comments
+      Post.hasMany(models.Comment, {
+        foreignKey: 'postsId',  // Associado à coluna postsId em Comment
+        as: 'comments',  // Alias para acessar os comentários
+        onDelete: 'CASCADE',  // Remove comentários ao deletar o post
+      });
     }
   }
   Post.init({

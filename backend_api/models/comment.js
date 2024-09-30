@@ -10,7 +10,11 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      // Um Comment pertence a um Post
+      Comment.belongsTo(models.Post, {
+        foreignKey: 'postsId',  // Associado à coluna postsId
+        as: 'post'  // Alias para acessar o post ao qual o comentário pertence
+      });
     }
   }
   Comment.init({

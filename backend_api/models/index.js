@@ -9,13 +9,24 @@ const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.js')[env];
 const db = {};
 
+// Verificando a configuração diretamente do arquivo `config.js`
 let sequelize;
-if (config.use_env_variable && process.env[config.use_env_variable]) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
+if (config) {
+  sequelize = new Sequelize(config.database, config.username, config.password, {
+    host: config.host,
+    dialect: config.dialect,
+    port: config.port || 3306,  // Usa a porta padrão 3306 se não for especificada
+    dialectOptions: {
+      ssl: {
+        require: config.ssl === true  // SSL deve ser requerido dependendo da configuração
+      }
+    }
+  });
 } else {
-  throw new Error('DATABASE_URL not defined in environment variables');
+  throw new Error('Nenhuma configuração de banco de dados foi encontrada.');
 }
 
+// Carrega os modelos
 fs
   .readdirSync(__dirname)
   .filter(file => {
@@ -31,14 +42,15 @@ fs
     db[model.name] = model;
   });
 
+// Configura as associações, se houverem
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
   }
 });
 
+// Exporta a instância do Sequelize e os modelos
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 module.exports = db;
-

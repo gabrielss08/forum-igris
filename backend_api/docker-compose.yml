@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  api:
+    build:
+      context: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+
+  db:
+    image: mysql:latest
+    ports:
+      - "3307:3306"  # Se você mudou a porta para 3307
+    environment:
+      - MYSQL_DATABASE=azure
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=root  # Essa linha é importante
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:

@@ -5,7 +5,7 @@ const cors = require('cors');
 const db = require('./models'); // Importa a configuração do banco de dados
 
 const app = express();
-const port = 8081;
+const port = 3000;
 
 // Importações dos controladores
 const post = require('./controllers/postController.js');
